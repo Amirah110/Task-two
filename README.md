@@ -4,6 +4,14 @@ Create a web page to display the stored data (last value).
 1- creat the code in HTML to display the last command (last value) + today commans ,and styles in CSS and make the web page is active by using JAVASCRIPT. 
 ![‏‏لقطة الشاشة (53)](https://github.com/Amirah110/Task-two/assets/173727118/6ff74e8a-e54d-4513-99f3-fd6baf9d1d48)
 
+web page to display last command(last value)
+![‏‏لقطة الشاشة (51)](https://github.com/Amirah110/Task-two/assets/173727118/518fb9e8-11b1-4ad3-86d5-84cd467219a9)
+
+web page to display today commands
+![‏‏لقطة الشاشة (52)](https://github.com/Amirah110/Task-two/assets/173727118/7def3ad6-7f09-4373-8e55-85d6fbe2bcd4)
+
+
+
 2 -write the code of create table in sql (same task one)
 
 3- write the code in php 
