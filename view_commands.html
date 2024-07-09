@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TASK TWO</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+        h1, h2 {
+            color: #333;
+            border: 2px solid #333;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px;
+            width: 80%;
+        }
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #fff;
+            padding: 20px;
+            border: 2px solid #333;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+        }
+        .button {
+            color: white;
+            padding: 15px 32px;
+            margin: 10px;
+            border: 2px solid #333;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .button-show-last { background-color: #4CAF50; }
+        .button-show-today { background-color: #2196F3; }
+        .button:hover {
+            transform: scale(1.05);
+        }
+        .button:active {
+            transform: scale(0.95);
+        }
+        #output {
+            margin: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border: 2px solid #333;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: right; 
+            direction: rtl; 
+            width: 80%;
+        }
+    </style>
+</head>
+<body>
+    <h1>TASK TWO</h1>
+    <h2>Display stored data (LAST VALUE) </h2>
+    <div class="button-container">
+        <button class="button button-show-last" onclick="showLastCommand()">Display the last command</button>
+        <button class="button button-show-today" onclick="showTodayCommands()">Display the today commands</button>
+    </div>
+    <div id="output"></div>
+
+    <script>
+        function showLastCommand() {
+            fetch('get_last_command.php')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('output').style.display = 'block';
+                    document.getElementById('output').innerHTML = `<strong> last command:</strong> ${data.command} <br> <strong>الوقت:</strong> ${data.time}`;
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        function showTodayCommands() {
+            fetch('get_today_commands.php')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('output').style.display = 'block';
+                    let outputHtml = '<strong>today commands</strong><br>';
+                    data.forEach(command => {
+                        outputHtml += `command : ${command.command} - time: ${command.time}<br>`;
+                    });
+                    document.getElementById('output').innerHTML = outputHtml;
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>
